@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+
+function Register() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleRegister = () => {
+    alert(`Имя: ${name}\nEmail: ${email}\nПароль: ${password}`);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  return (
+    <div>
+      <h2>Регистрация</h2>
+      <div>
+        <label>
+          Имя:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Пароль:
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={toggleShowPassword}
+          />
+          Показать пароль
+        </label>
+      </div>
+      <button onClick={handleRegister}>Зарегистрироваться</button>
+    </div>
+  );
+}
+
+export default Register;
